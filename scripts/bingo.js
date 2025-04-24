@@ -24,9 +24,9 @@ function init() {
     for (let col = 0; col < 7; col++) {
       let td = document.createElement('td');
       td.innerHTML = randomNumbers[index];
-      tr.appendChild(td);
+      tr.appendChild(td);// append the cell to the row
       index++;
     }
-    table.appendChild(tr);
+    table.appendChild(tr);// append the row to the table
   }
 }
