@@ -10,14 +10,15 @@ function init() {
       // if not, add it to the array
       randomNumbers.push(randomNumber); 
     } else {
-      // if the number is already in the array, decrement i to repeat the iteration
-      i--;
+      i--; // decrement i to ensure we get 49 unique numbers
     }
   }
 
   // ----- Render the Bingo table -----
   let table = document.getElementById('bingo-table');// get the table element
-  let index = 0;
+  let index = 0; // index to track the position in the randomNumbers array
+ 
+  
   for (let row = 0; row < 7; row++) {
     let tr = document.createElement('tr');
     for (let col = 0; col < 7; col++) {
