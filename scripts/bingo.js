@@ -30,3 +30,8 @@ function init() {
     table.appendChild(tr);// append the row to the table
   }
 }
+
+
+function generateRandomNumber () {
+  
+}
