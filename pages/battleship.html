@@ -1,16 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/scripts/battleship.js" defer></script>
-    <link rel="stylesheet" href="/styles/battleship.css">
-    <title>Battleships </title>
-</head>
-<body>
+    <link rel="stylesheet" href="/styles/battleships.css">
+    <title>Battleships</title>
+  </head>
+  <body>
+    <h2>Battleship</h2>
 
-    <table id="battleship-table"></table>
-    
-    
-</body>
+    <form id="game-form" onsubmit="startGame(event)">
+      <label>Choose board size:</label>
+      <select id="board-size" name="board-size">
+        <option value="10">10x10</option>
+        <option value="11">11x11</option>
+        <option value="12">12x12</option>
+        <option value="13">13x13</option>
+        <option value="14">14x14</option>
+        <option value="15">15x15</option>
+      </select>
+
+      <lable>Choose number of ships sized 2:</lable>
+      <input
+        type="number"
+        id="ships-2"
+        name="ships-2"
+        min="1"
+        max="3"
+        value="1"
+        step="1"
+      />
+      <lable>Choose number of ships sized 3:</lable>
+      <input
+        type="number"
+        id="ships-3"
+        name="ships-3"
+        min="1"
+        max="3"
+        value="1"
+        step="1"
+      />
+      <lable>Choose number of ships sized 4:</lable>
+      <input
+        type="number"
+        id="ships-4"
+        name="ships-4"
+        min="1"
+        max="3"
+        value="1"
+        step="1"
+      />
+      <lable>Choose number of ships sized 5:</lable>
+      <input
+        type="number"
+        id="ships-5"
+        name="ships-5"
+        min="1"
+        max="3"
+        value="1"
+        step="1"
+      />
+
+      <button type="submit" id="start-game-button">Start Game</button>
+    </form>
+
+
+    <h3>Player 1</h3>
+    <table id="player1-board"></table>
+    <h3>Opponent</h3>
+    <table id="opponent-board"></table>
+    <h3>Dummy Board</h3>
+    <table id="dummy-board"></table>
+
+
+  </body>
 </html>

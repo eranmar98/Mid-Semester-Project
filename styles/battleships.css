@@ -1,0 +1,10 @@
+table{
+border: 1px solid black;
+border-collapse: collapse; /* Collapse borders */
+
+}
+
+td{
+border: 1px solid black; /* Add border to cells */
+padding: 5px; 
+}
