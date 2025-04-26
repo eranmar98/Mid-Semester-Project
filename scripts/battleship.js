@@ -6,10 +6,6 @@ function startGame(event) {
   const ship4 = parseInt(document.getElementById('ships-4').value);
   const ship5 = parseInt(document.getElementById('ships-5').value);
 
-  //generate player board
-  //generate opponent board
-  //generate dummy board
-
   generateBoard(boardSize, 'player1-board'); // Generate the player board
   generateBoard(boardSize, 'opponent-board'); // Generate the opponent board
   generateBoard(boardSize, 'dummy-board'); // Generate the dummy board
@@ -17,7 +13,7 @@ function startGame(event) {
 
 function generateBoard(size, boardId) {
   const board = document.getElementById(boardId); // Get the board element
-  board.innerHTML = ''; // Clear the board
+  board.innerHTML = ''; // Clear the board/table content
   for (let row = 0; row < size; row++) {
     const tr = document.createElement('tr'); // Create a new table row
     for (let col = 0; col < size; col++) {

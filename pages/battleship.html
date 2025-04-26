@@ -10,6 +10,7 @@
   <body>
     <h2>Battleship</h2>
 
+    <!-- choosing table size -->
     <form id="game-form" onsubmit="startGame(event)">
       <label>Choose board size:</label>
       <select id="board-size" name="board-size">
@@ -21,6 +22,7 @@
         <option value="15">15x15</option>
       </select>
 
+      <!-- choosing number of ships based on size: -->
       <lable>Choose number of ships sized 2:</lable>
       <input
         type="number"
@@ -65,7 +67,7 @@
       <button type="submit" id="start-game-button">Start Game</button>
     </form>
 
-
+<!-- Game boards -->
     <h3>Player 1</h3>
     <table id="player1-board"></table>
     <h3>Opponent</h3>
