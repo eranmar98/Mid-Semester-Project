@@ -5,14 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/scripts/bingo.js" defer></script>
     <link rel="stylesheet" href="/styles/bingo.css" />
+
+    <!-- particles.js library used for background particle animation -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <title>Bingo</title>
   </head>
   <body onload="init()"> 
-    <h2>Bingo</h2>
+    <button><a href="/index.html">Back to game menu</a></button>
 
+<h2>Bingo:</h2>
     <table id="bingo-table"></table>
 
-    <button id="generate-button" onclick="generateRandomNumber()">Generate Random Number</button>
-    <h3>Random number: <span id="random-number"></span></h3>
+    <button id="generate-number">Generate Number</button>
+    <h3>Number generated: <span id="number-display"></span></h3>
+
+    <div id="particles-js"></div>
+
+
+<script>
+particlesJS('particles-js',
+  {
+    "particles": {
+      "number": {
+        "value": 80,
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": {
+        "value": ["#00f0ff", "#00ff99", "#ff00c8"]
+      },
+      "shape": {
+        "type": "circle",
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": true
+      },
+      "size": {
+        "value": 3,
+        "random": true
+      },
+      "move": {
+        "enable": true,
+        "speed": 2,
+        "direction": "none",
+        "out_mode": "out"
+      }
+    },
+    "interactivity": {
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "repulse"
+        }
+      }
+    },
+    "retina_detect": true
+  }
+);
+</script>
+
   </body>
 </html>
