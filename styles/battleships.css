@@ -73,6 +73,7 @@ body {
   
   /* Table styling */
   table {
+    border-radius: 5px;
     border-collapse: collapse;
     margin-top: 10px;
     margin-bottom: 30px;

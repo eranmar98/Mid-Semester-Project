@@ -14,11 +14,17 @@ function startGame(event) {
 function generateBoard(size, boardId) {
   const board = document.getElementById(boardId); // Get the board element
   board.innerHTML = ''; // Clear the board/table content
+
   for (let row = 0; row < size; row++) {
     const tr = document.createElement('tr'); // Create a new table row
+
     for (let col = 0; col < size; col++) {
       const td = document.createElement('td'); // Create a new table cell
-      // לגרום לכל תא להיות להדפיס את הסימן זיהוי שלו, מבלי להשפיע על כל הטבלאות)
+      if (boardId === 'opponent-board') {
+        td.addEventListener('click', function () {
+          this.style.backgroundColor = 'red'; // Mark the clicked cell
+        });
+      }
       tr.appendChild(td); // Append the cell to the row
     }
     board.appendChild(tr); // Append the row to the board

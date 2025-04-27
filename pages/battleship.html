@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/scripts/battleship.js" defer></script>
-    <link rel="stylesheet" href="/styles/battleships.css">
+    <link rel="stylesheet" href="/styles/battleships.css" />
     <title>Battleships</title>
   </head>
   <body>
@@ -12,6 +12,7 @@
 
     <!-- choosing table size -->
     <form id="game-form" onsubmit="startGame(event)">
+      <!-- prevent default form submission -->
       <label>Choose board size:</label>
       <select id="board-size" name="board-size">
         <option value="10">10x10</option>
@@ -67,14 +68,12 @@
       <button type="submit" id="start-game-button">Start Game</button>
     </form>
 
-<!-- Game boards -->
+    <!-- Game boards -->
     <h3>Player 1</h3>
     <table id="player1-board"></table>
     <h3>Opponent</h3>
     <table id="opponent-board"></table>
     <h3>Dummy Board</h3>
     <table id="dummy-board"></table>
-
-
   </body>
 </html>
