@@ -1,5 +1,5 @@
 // ========================
-// 📜 Global Variables
+// Global Variables
 // ========================
 let opponentShips = []; // Opponent's 2D ship array
 let playerShips = []; // Player's 2D ship array
@@ -67,8 +67,8 @@ function generateBoard(size, boardId) {
         }
       }
 
-      td.dataset.row = row;
-      td.dataset.col = col;
+      td.dataset.row = row; // Store row index in data attribute
+      td.dataset.col = col; // Store column index in data attribute
 
       if (boardId === 'opponent-board') {
         td.addEventListener('click', shootAtCell);
@@ -90,6 +90,7 @@ function initializePlayerShips(size, ship2, ship3, ship4, ship5) {
     .map(() => Array(size).fill(0));
 
   const ships = [
+    // Define ship sizes and counts
     { size: 2, count: ship2 },
     { size: 3, count: ship3 },
     { size: 4, count: ship4 },
@@ -103,11 +104,13 @@ function initializePlayerShips(size, ship2, ship3, ship4, ship5) {
   });
 }
 
+// Place ships randomly on the player's board
 function placePlayerShipRandomly(shipSize) {
   const size = playerShips.length;
   let placed = false;
 
   while (!placed) {
+    // Keep trying until the ship is placed
     const direction = Math.random() < 0.5 ? 'horizontal' : 'vertical';
     const row = Math.floor(Math.random() * size);
     const col = Math.floor(Math.random() * size);
@@ -125,10 +128,12 @@ function placePlayerShipRandomly(shipSize) {
   }
 }
 
+// Check if the ship can be placed on the board without overlapping
 function canPlacePlayerShip(row, col, shipSize, direction) {
-  const size = playerShips.length;
+  const size = playerShips.length; // Get the size of the board
 
   if (direction === 'horizontal') {
+    // Check for horizontal placement
     if (col + shipSize > size) return false;
     for (let i = 0; i < shipSize; i++) {
       if (playerShips[row][col + i] !== 0) return false;
@@ -296,7 +301,7 @@ function checkWin() {
     opponentShipsLeft[5] === 0
   ) {
     setTimeout(() => {
-      alert('🏆 YOU WIN! Congratulations!');
+      alert('YOU WIN! Congratulations!');
       location.reload(); // Reload the page after winning
     }, 200); // Small delay so you see the last red cell
   }
