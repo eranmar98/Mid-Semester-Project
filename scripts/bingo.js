@@ -17,8 +17,9 @@ function init() {
 
   // Render the Bingo table
   let table = document.getElementById('bingo-table');
-  let index = 0;
+  let index = 0; // Index to track the position in the randomNumbers array
 
+  // Create 7 rows and 7 columns
   for (let row = 0; row < 7; row++) {
     let tr = document.createElement('tr');
     for (let col = 0; col < 7; col++) {
@@ -28,31 +29,17 @@ function init() {
       // Add click event to each cell
       td.addEventListener('click', function () {
         if (parseInt(td.textContent) === lastGeneratedNumber) {
-          td.classList.add('checked'); // Add a class to visually indicate the cell is checked
           score++;
         } else {
           alert("Number wasn't generated!");
           mistakeCount++;
           if (mistakeCount >= 3) {
             alert('You made 3 mistakes! You are disqualified.');
+            location.reload(); // Reload the page to reset the game
+          }
+        }
+      });
 
-            // Optional: disable further clicks if needed
-          }
-        }
-      });
-      td.addEventListener('click', function () {
-        if (parseInt(td.textContent) === lastGeneratedNumber) {
-          td.classList.add('checked');
-          checkForWin(td);
-        } else {
-          alert("This number wasn't generated!");
-          mistakeCount++;
-          if (mistakeCount >= 3) {
-            alert('You made 3 mistakes! You are disqualified.');
-            // Optional: disable further clicks if you want
-          }
-        }
-      });
       tr.appendChild(td);
       index++;
     }
