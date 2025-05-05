@@ -1,6 +1,4 @@
-/* ============================ */
-/* BACKGROUND AND BODY */
-/* ============================ */
+
 
 body {
   margin: 0;
@@ -154,4 +152,12 @@ h3 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+td.checked {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
 }

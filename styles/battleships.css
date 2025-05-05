@@ -1,101 +1,155 @@
-table{
-border: 1px solid black;
-border-collapse: collapse; /* Collapse borders */
-
+/* General reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-td{
-border: 1px solid black; /* Add border to cells */
-padding: 5px; 
-}
-
-/* General body setup */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
-    padding: 20px;
-  }
-  
-  /* Form container */
-  #game-form {
-    background-color: #ffffff;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-  }
-  
-  /* Labels */
-  #game-form label,
-  #game-form lable {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    margin-top: 15px;
-  }
-  
-  /* Select and input styling */
-  #game-form select,
-  #game-form input[type="number"] {
-    width: 100%;
-    padding: 8px 10px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  /* Button styling */
-  #start-game-button {
-    margin-top: 20px;
-    width: 100%;
-    background-color: #4caf50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  #start-game-button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Headings */
-  h3 {
-    margin-top: 40px;
-    color: #333;
-  }
-  
-  /* Table styling */
-  table {
-    border-radius: 5px;
-    border-collapse: collapse;
-    margin-top: 10px;
-    margin-bottom: 30px;
-  }
-  
-  table td {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    text-align: center;
-    vertical-align: middle;
-  }
-  
-  /* Different background color for each board for fun */
-  #player1-board td {
-    background-color: #e3f2fd;
-  }
-  
-  #opponent-board td {
-    background-color: #ffebee;
-  }
-  
-  #dummy-board td {
-    background-color: #ede7f6;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1b2b34);
+  background-size: 400% 400%;
+  animation: softGlow 15s ease infinite;
+  color: #fff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#victory-banner {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  padding: 40px 60px;
+  font-size: 48px;
+  font-weight: bold;
+  color: #00ffc8;
+  background: rgba(0, 0, 0, 0.8);
+  border: 3px solid #00ffc8;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #00ffc877;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  animation: fadeInWin 2s ease forwards;
+}
+
+
+
+
+/* Headings */
+h2, h3 {
+  margin: 20px 0;
+  color: #00e6e6;
+  text-shadow: 0 0 5px #00e6e6;
+}
+
+/* Form container */
+#game-form {
+  background-color: #ffffff10;
+  backdrop-filter: blur(5px);
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #00e6e688;
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+#game-form label,
+#game-form lable {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #e0f7fa;
+}
+
+#game-form select,
+#game-form input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #fefefe;
+  font-size: 14px;
+}
+
+#start-game-button {
+  margin-top: 20px;
+  width: 100%;
+  background: linear-gradient(to right, #00c9ff, #92fe9d);
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#start-game-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px #00e6e6aa;
+}
+
+/* Board Tables */
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 0 20px #00e6e622;
+}
+
+table td {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #88ffff66;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#opponent-board td {
+  background-color: #14222e;
+}
+
+#opponent-board td.clicked {
+  transform: scale(0.95);
+}
+
+#opponent-board td.clicked[style*="red"] {
+  background-color: #ff1744 !important;
+  box-shadow: inset 0 0 5px #ff5252;
+}
+
+#opponent-board td.clicked[style*="lightgray"] {
+  background-color: #90a4ae !important;
+}
+
+/* Scoreboard Table */
+#scoreboard {
+  margin-top: 40px;
+  background-color: #ffffff10;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px #00e6e688;
+  color: #ffffff;
+  border: none;
+}
+
+#scoreboard th, #scoreboard td {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ffffff22;
+  text-align: center;
+}
+
+#scoreboard th {
+  background-color: #00e6e6;
+  color: #000;
+  text-shadow: none;
+}

@@ -3,66 +3,79 @@ body {
   background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
-  font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', cursive, sans-serif;
+  font-family: 'Segoe UI', 'Comic Sans MS', 'Arial Rounded MT Bold', cursive;
   text-align: center;
-  padding: 50px;
+  padding: 60px 20px;
   color: #fff;
-  overflow-x: hidden; /* prevent horizontal scrollbar */
+  overflow-x: hidden;
 }
 
 @keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Card styles */
 .game-card {
-  background: white;
-  color: #333;
-  border-radius: 30px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  background: linear-gradient(145deg, #ffffff, #f4f4f4);
+  color: #222;
+  border-radius: 25px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
   width: 350px;
   margin: 50px auto;
-  padding: 20px;
-  position: relative; /* IMPORTANT to let the image be absolutely positioned inside */
+  padding: 30px;
+  position: relative;
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(6px);
 }
 
 /* Hover effects on the card */
 .game-card:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 /* Title and text */
 .game-card h2 {
   font-size: 2.5rem;
   margin-bottom: 10px;
+  color: #ff4081;
+  text-shadow: 0 0 4px #ffb3c6;
 }
 
 .game-card p {
   font-size: 1.2rem;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: #444;
 }
 
 /* Button style */
 .game-card button {
-  background-color: #ff6f61;
+  background: linear-gradient(to right, #ff6f61, #f06292);
   border: none;
-  border-radius: 30px;
-  padding: 10px 25px;
+  border-radius: 50px;
+  padding: 12px 30px;
   font-size: 1.2rem;
   font-weight: bold;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 105, 135, 0.4);
 }
 
 .game-card button:hover {
-  background-color: #ff4c3b;
+  background: linear-gradient(to right, #ff1744, #f50057);
   transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(255, 0, 77, 0.5);
 }
 
 /* Make sure link inside button looks good */
@@ -75,33 +88,32 @@ body {
 .game-logo {
   position: absolute;
   top: 50%;
-  left: -150px; /* Start hidden to the left */
+  left: -150px;
   width: 250px;
-  transform: translateY(-50%) rotate(-10deg);
+  transform: translateY(-50%) rotate(-15deg);
   opacity: 0.5;
   transition: left 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none; /* makes sure the image doesn't block hover */
-  z-index: -1; /* hide behind the card */
+  pointer-events: none;
+  z-index: -1;
 }
 
-/* When you hover the card, the logo slides in */
 .game-card:hover .game-logo {
-  left: -30px; /* slide closer to the card */
-  opacity: 0.8;
-  transform: translateY(-50%) rotate(0deg) scale(1.1);
+  left: -20px;
+  opacity: 0.85;
+  transform: translateY(-50%) rotate(-5deg) scale(1.05);
 }
 
 /* Group all the text inside a container */
 .game-card .card-content {
   position: relative;
-  background: transparent;
-  padding: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 20px;
   border-radius: 20px;
-  transition: background-color 0.4s ease;
+  backdrop-filter: blur(8px);
+  transition: background-color 0.4s ease, transform 0.3s ease;
 }
 
-/* When hovering, slightly darken the card content */
 .game-card:hover .card-content {
-  background: rgba(255, 255, 255, 0.8); /* soft white background */
-  backdrop-filter: blur(5px); /* optional: adds slight blur behind */
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.02);
 }

@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/scripts/battleship.js" defer></script>
-    
+    <script type="module" src="/scripts/battleship.js" defer></script>
+    <script type="module" src="/scripts/battleship_functions.js" defer></script>
+
     <link rel="stylesheet" href="/styles/battleships.css" />
     <title>Battleships</title>
   </head>
@@ -12,7 +13,7 @@
     <h2>Battleship</h2>
 
     <!-- choosing table size -->
-    <form id="game-form" onsubmit="startGame(event)">
+    <form id="game-form">
       <!-- prevent default form submission -->
       <label>Choose board size:</label>
       <select id="board-size" name="board-size">
@@ -69,20 +70,32 @@
       <button type="submit" id="start-game-button">Start Game</button>
     </form>
 
-    <!-- Game boards -->
-    <h3>Player 1</h3>
-    <table id="player1-board"></table>
+    <!-- Game board -->
     <h3>Opponent</h3>
     <table id="opponent-board"></table>
 
-
+    <!-- opponent board - ships count -->
     <table id="scoreboard">
-      <tr><th>Ship Size</th><th>Remaining</th></tr>
-      <tr><td>2</td><td id="ship-2-count"></td></tr>
-      <tr><td>3</td><td id="ship-3-count"></td></tr>
-      <tr><td>4</td><td id="ship-4-count"></td></tr>
-      <tr><td>5</td><td id="ship-5-count"></td></tr>
+      <tr>
+        <th>Ship Size</th>
+        <th>Remaining</th>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td id="ship-2-count"></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td id="ship-3-count"></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td id="ship-4-count"></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td id="ship-5-count"></td>
+      </tr>
     </table>
-    
   </body>
 </html>
