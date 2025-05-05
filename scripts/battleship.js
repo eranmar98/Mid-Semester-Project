@@ -1,21 +1,8 @@
-// ========================
-// Global Variables
-// ========================
+// global variables
 let opponentShips = []; // Opponent's 2D ship array
 let playerShips = []; // Player's 2D ship array
 
-// ========================
-// Opponent's Ships Left
-let opponentShipsLeft = {
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
-};
-
-// ========================
-// Game Start and Initialization
-// ========================
+//start game button
 const startGameButton = document.getElementById('start-game-button');
 startGameButton.addEventListener('click', function (event) {
   startGame(event); // Start the game when the button is clicked
@@ -24,12 +11,14 @@ startGameButton.addEventListener('click', function (event) {
 function startGame(event) {
   event.preventDefault(); // Prevent default form submission
 
+  // Get the values from the input fields
   const boardSize = parseInt(document.getElementById('board-size').value);
   const ship2 = parseInt(document.getElementById('ships-2').value);
   const ship3 = parseInt(document.getElementById('ships-3').value);
   const ship4 = parseInt(document.getElementById('ships-4').value);
   const ship5 = parseInt(document.getElementById('ships-5').value);
 
+  // Validate the input values
   if (
     isNaN(boardSize) ||
     isNaN(ship2) ||
@@ -37,7 +26,7 @@ function startGame(event) {
     isNaN(ship4) ||
     isNaN(ship5)
   ) {
-    alert('Fill all fields before starting the game!');
+    alert('Fill all fields before starting the game, numbers only!');
     return;
   }
 
@@ -48,32 +37,16 @@ function startGame(event) {
   generateBoard(boardSize, 'opponent-board');
 }
 
-// ========================
-// Board Creation
-// ========================
+// generate the game board
 function generateBoard(size, boardId) {
   const board = document.getElementById(boardId);
-  board.innerHTML = '';
+  board.innerHTML = ''; // Clear the board before generating a new one
 
   for (let row = 0; row < size; row++) {
     const tr = document.createElement('tr');
 
     for (let col = 0; col < size; col++) {
       const td = document.createElement('td');
-
-      if (boardId === 'player1-board') {
-        if (playerShips[row][col] > 0) {
-          td.style.backgroundColor = 'blue'; // Your ship cell
-        }
-      }
-
-      td.dataset.row = row; // Store row index in data attribute
-      td.dataset.col = col; // Store column index in data attribute
-
-      if (boardId === 'opponent-board') {
-        td.addEventListener('click', shootAtCell);
-      }
-
       tr.appendChild(td);
     }
 
@@ -126,25 +99,6 @@ function placePlayerShipRandomly(shipSize) {
       placed = true;
     }
   }
-}
-
-// Check if the ship can be placed on the board without overlapping
-function canPlacePlayerShip(row, col, shipSize, direction) {
-  const size = playerShips.length; // Get the size of the board
-
-  if (direction === 'horizontal') {
-    // Check for horizontal placement
-    if (col + shipSize > size) return false;
-    for (let i = 0; i < shipSize; i++) {
-      if (playerShips[row][col + i] !== 0) return false;
-    }
-  } else {
-    if (row + shipSize > size) return false;
-    for (let i = 0; i < shipSize; i++) {
-      if (playerShips[row + i][col] !== 0) return false;
-    }
-  }
-  return true;
 }
 
 function initializeOpponentShips(size, ship2, ship3, ship4, ship5) {
@@ -240,7 +194,7 @@ function shootAtCell(event) {
       opponentShipsLeft[shipSize]--;
       updateScoreboard();
       alert('BOOM! You destroyed a ship of size ' + shipSize + '!');
-      checkWin(); // 🏆 CHECK IF YOU WON after destroying a ship
+      checkWin(); //CHECK IF YOU WON after destroying a ship
     }
   } else {
     cell.style.backgroundColor = 'lightgray';
@@ -249,32 +203,7 @@ function shootAtCell(event) {
   opponentShoot();
 }
 
-function opponentShoot() {
-  const size = playerShips.length;
-  let shot = false;
-
-  while (!shot) {
-    const row = Math.floor(Math.random() * size);
-    const col = Math.floor(Math.random() * size);
-
-    const board = document.getElementById('player1-board');
-    const playerCell = board.rows[row].cells[col];
-
-    if (!playerCell.classList.contains('shot')) {
-      if (playerShips[row][col] > 0) {
-        playerCell.style.backgroundColor = 'red';
-      } else {
-        playerCell.style.backgroundColor = 'lightgray';
-      }
-      playerCell.classList.add('shot');
-      shot = true;
-    }
-  }
-}
-
-// ========================
-// 🧹 Helper Functions
-// ========================
+// Helper Functions
 function checkIfShipDestroyed(shipSize) {
   for (let row = 0; row < opponentShips.length; row++) {
     for (let col = 0; col < opponentShips.length; col++) {
@@ -293,6 +222,7 @@ function updateScoreboard() {
   document.getElementById('ship-5-count').textContent = opponentShipsLeft[5];
 }
 
+// Check if all ships are destroyed
 function checkWin() {
   if (
     opponentShipsLeft[2] === 0 &&
@@ -301,6 +231,7 @@ function checkWin() {
     opponentShipsLeft[5] === 0
   ) {
     setTimeout(() => {
+      // Delay to show the last red cell
       alert('YOU WIN! Congratulations!');
       location.reload(); // Reload the page after winning
     }, 200); // Small delay so you see the last red cell
