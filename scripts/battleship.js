@@ -3,9 +3,10 @@ import {
   generateBoard,
 } from './battleship_functions.js';
 
+// This function is called when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('game-form');
-  form.addEventListener('submit', startGame);
+  form.addEventListener('submit', startGame); // Attach the startGame function to the form submission event
 });
 
 function startGame(event) {

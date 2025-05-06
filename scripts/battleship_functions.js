@@ -55,21 +55,22 @@ export function placeShipRandomly(shipSize) {
   }
 }
 
+// Function to check if a ship can be placed at the given position
 export function canPlaceShip(row, col, shipSize, dir) {
   const size = opponentShips.length;
 
   if (dir === 'horizontal') {
-    if (col + shipSize > size) return false;
+    if (col + shipSize > size) return false; // Check if the ship fits horizontally
     for (let i = 0; i < shipSize; i++) {
-      if (opponentShips[row][col + i] !== 0) return false;
+      if (opponentShips[row][col + i] !== 0) return false; // Check if the cell is already occupied
     }
   } else {
-    if (row + shipSize > size) return false;
+    if (row + shipSize > size) return false; // Check if the ship fits vertically
     for (let i = 0; i < shipSize; i++) {
-      if (opponentShips[row + i][col] !== 0) return false;
+      if (opponentShips[row + i][col] !== 0) return false; // Check if the cell is already occupied
     }
   }
-  return true;
+  return true; // Return true if the ship can be placed
 }
 
 export function generateBoard(size) {
